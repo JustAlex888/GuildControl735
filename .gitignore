@@ -1,0 +1,7 @@
+WTF/
+Logs/
+*.bak
+*.log
+*.zip
+.DS_Store
+Thumbs.db

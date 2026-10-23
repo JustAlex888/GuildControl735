@@ -1,0 +1,9 @@
+GuildControl735 0.0.102
+Copyright (c) 2026 JustAlex888. All Rights Reserved.
+
+Permission is granted to install and run this addon for personal use.
+Redistribution of this version, modified versions, or its code and bundled
+project assets requires prior permission from the rights holder.
+The software is provided without warranty, to the extent permitted by law.
+These terms do not revoke permissions previously granted for older versions.
+Blizzard names, game interfaces and external products belong to their owners.

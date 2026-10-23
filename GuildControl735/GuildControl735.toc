@@ -1,0 +1,95 @@
+## Interface: 70300
+## Title: Guild Control 735 for UWoW Legion
+## Notes: Filterable guild roster with permission-aware Guild Control profiles.
+## Notes-ruRU: Состав гильдии, доверенные звания, визитки и аналитика Guild Control 735.
+## Author: Guild Control 7.3.5 Project
+## Version: 0.0.102-TEST
+## X-Build: GuildControl735-0.0.102-20261023-01
+## X-Component: Shared-Roster
+## X-Status: TEST
+## X-Provenance: GC735_099_FROM_6C5F68E2_LANGUAGE_BRAND
+## X-License: All Rights Reserved
+## SavedVariables: GuildControl735DB
+
+Localization.lua
+LocaleText.lua
+Core.lua
+Services\Diagnostics.lua
+Services\DiagnosticCapture.lua
+Data\Roster.lua
+Services\RosterRetention.lua
+Services\GuildCache.lua
+Services\SpamShield.lua
+Data\SatelliteStore.lua
+Services\TrustBoundary.lua
+Services\AdminTrust.lua
+Services\Permissions.lua
+Services\SatelliteProtocol.lua
+Services\DataExchange.lua
+Services\FastWire.lua
+Services\FastRecords.lua
+Services\FastSync.lua
+Services\ManualBans.lua
+Services\CacheSync.lua
+Services\SecureExchange.lua
+Services\ProfileList.lua
+Services\FamilyCodec.lua
+Services\FamilySync.lua
+Services\OfficerMarks.lua
+Services\Filters.lua
+Services\Reminders.lua
+Services\RatingProvider.lua
+Services\MythicTrace.lua
+Services\UWoWMythicAdapter.lua
+Services\LadderObserver.lua
+Services\MythicLadder.lua
+Services\LadderRefresh.lua
+Services\RatingTabs.lua
+UI\Dropdown.lua
+UI\DockedPanels.lua
+UI\MemberCard.lua
+UI\ReminderWindow.lua
+UI\MinimapButton.lua
+UI\FloatingButton.lua
+UI\Shell.lua
+Services\AnalyticsSearch.lua
+Services\MythicAnalytics.lua
+Services\RaidAnalytics.lua
+UI\RaidAnalytics.lua
+UI\AnalyticsReset.lua
+UI\MythicAnalytics.lua
+Services\PvPAnalytics.lua
+UI\PvPAnalytics.lua
+UI\NetworkSecurity.lua
+UI\Pages.lua
+UI\MemberActions.lua
+UI\MemberManagement.lua
+UI\RosterDetails.lua
+UI\RosterLayout.lua
+UI\GeneralColumns.lua
+UI\Responsive.lua
+UI\Presentation.lua
+UI\MainWindow.lua
+Services\MassActions.lua
+UI\MassRoster.lua
+
+Services\RaidWire.lua
+Services\RaidRuntime.lua
+Services\RaidTest.lua
+UI\RaidUI.lua
+UI\DiagnosticSettings.lua
+UI\AdminTrust.lua
+
+Character\Localization.lua
+Character\Core.lua
+Character\Data\Profile.lua
+Character\Data\CharacterFamily.lua
+Character\Services\Protocol.lua
+Character\Services\FamilyCodec.lua
+Character\Services\FamilyProtocol.lua
+Character\UI\MainWindow.lua
+Character\UI\FamilyWindow.lua
+Character\UI\ShellPage.lua
+DevTools\ReceiverProbe.lua
+
+Services/LabBridge.lua

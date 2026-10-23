@@ -1,0 +1,1 @@
+-- Legacy SEC1/2 transport retired. SecureExchange compatibility API is defined in FastSync.lua.
