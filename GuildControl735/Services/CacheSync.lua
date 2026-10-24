@@ -270,6 +270,7 @@ function C:Receive(msg,sender,channel)
  if kind=="F"and msg=="F|"..s.id and s.phase=="rows"then
   self:Send(s,"Z|"..s.id);s.phase="done";s.doneAt=Clock();self.metrics.completed=self.metrics.completed+1
   self.attempts={}
+  self.nextRefresh=Clock()+7200+(self.joinSlot or 1)*0.2
   Log("complete owners="..s.index.." via="..s.provider);return true
  end
  return self:Reject("phase_or_nonce")
@@ -297,19 +298,26 @@ function C:Tick()
     elseif status=="done"then
      if name=="server"then s.phase="list";self:Send(s,"V|"..s.id.."|"..s.digest)
      elseif s.digest==s.remoteDigest then
-      self:Send(s,"Z|"..s.id);s.phase="done";s.doneAt=Clock();self.metrics.completed=self.metrics.completed+1;Log("unchanged")
+      self:Send(s,"Z|"..s.id);s.phase="done";s.doneAt=Clock();self.metrics.completed=self.metrics.completed+1;Log("unchanged");self.nextRefresh=Clock()+7200+(self.joinSlot or 1)*0.2
       self.attempts={}
      else s.phase="rows";self:Send(s,"L|"..s.id)end
     end
    end
   end
  end
+ if not self.nextRefresh then self.nextRefresh=Clock()+7200+(self.joinSlot or 1)*0.2 end
+ if Clock()>=self.nextRefresh and not G.AdminTrust:OwnAllowed()then self:Want("periodic_two_hours");self.nextRefresh=Clock()+7200+(self.joinSlot or 1)*0.2 end
  if paused or self.client or self.server or not self.wanted or Clock()<(self.nextAsk or 0)or G.FastSync.job or G.FastSync.active then return end
  if Clock()<(self.electAt or 0)then return end
  self.electAt=Clock()+5
  local peers={};local fingerprint={}
  for _,m in ipairs(G.Roster.members or{})do if m.guid~=Own()and self:Trusted(m.guid)then peers[#peers+1]=m end end
- table.sort(peers,function(a,b)if a.rankIndex~=b.rankIndex then return a.rankIndex<b.rankIndex end;return a.guid<b.guid end)
+ table.sort(peers,function(a,b)
+  if a.guid==b.guid then return false end
+  if a.guid==C.preferredProvider then return true end
+  if b.guid==C.preferredProvider then return false end
+  if a.rankIndex~=b.rankIndex then return a.rankIndex<b.rankIndex end;return a.guid<b.guid
+ end)
  for _,m in ipairs(peers)do fingerprint[#fingerprint+1]=m.guid end
  local signature=table.concat(fingerprint,",")
  if self.peers~=signature then self.peers=signature;self.attempts={};self.exhaustedAt=nil end

@@ -1,3 +1,38 @@
+# Guild Control 735 for UWoW Legion — 0.0.103 TEST
+Build: GuildControl735-0.0.103-20261023-01
+Provenance: GC735_103_FROM_8D8BA0E1_COOPERATIVE_SURVEY
+
+RU: Автоматический сбор каждые 30 минут, повторный успешный опрос персонажа
+не чаще 8 часов. Один доступный доверенный клиент ведёт очередь; начавший
+заканчивает проход независимо от входа старшего звания. При выходе ведущего
+продолжает доступный клиент с наивысшим доверенным званием (глава первый).
+Результаты и ожидающая очередь передаются доверенным клиентам. Новые онлайн
+персонажи добавляются без дублей. Проход ограничен 15 минутами; неответившие
+повторяются ограниченно, затем ждут следующего прохода. Ручной запрос обходит
+8 часов. «Остановить запрос» прерывает местный сбор и откладывает его на 30 минут.
+Рядовые получают сохранённую копию при входе и дополнительно раз в 2 часа.
+
+EN: Cooperative automatic owner survey every 30 minutes; successful owners are
+skipped for 8 hours. The current collector finishes its pass when senior peers
+join. Trusted peers replicate results, pending owners and verified survey marks.
+Failover elects the highest available trusted rank, then GUID; the guild master
+has highest priority. Newly online owners join the bounded pass. Pass limit is
+15 minutes; silent clients have bounded retries and wait for the next pass.
+Manual survey bypasses the 8-hour filter. Stop request stops the local automatic
+pass and defers it for 30 minutes. Ordinary clients catch up on login and every
+2 hours. All participating collectors must install 0.0.103 for queue handover.
+
+Known limits: best-effort delivery; missed or unavailable copies may cause safe
+repeat requests. Polling reads saved equipment profiles, not a new gear capture.
+Authentication, transport throttling and native guild permissions remain active.
+No universal anti-DDoS claim. No new protected guild actions or bundled library.
+Install with WoW CLOSED, replace GuildControl735 only and preserve WTF/settings.
+Rollback: exact published 0.0.102. Additional guild-scoped scheduler data is ignored
+by 0.0.102; existing settings are not reset or migrated.
+STATIC_VERIFIED / READY_FOR_TEST only after the attached checks pass.
+GAME_NOT_OBSERVED for 0.0.103. No GitHub publication authorized for this candidate.
+
+--- Earlier documentation (historical) ---
 # Guild Control 735 for UWoW Legion — 0.0.102 TEST
 Build: GuildControl735-0.0.102-20261023-01
 Provenance: GC735_102_FROM_2F01BD44_LEADER_ONLY_DEFAULT

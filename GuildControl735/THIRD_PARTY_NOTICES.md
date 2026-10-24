@@ -1,4 +1,4 @@
-# GuildControl735 0.0.102 — origin and licensing
+# GuildControl735 0.0.103 — origin and licensing
 
 This version contains no embedded BugGrabber or other declared third-party Lua
 library. BugGrabber is mentioned only as a separately installed diagnostic tool;

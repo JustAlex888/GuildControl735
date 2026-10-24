@@ -1,4 +1,4 @@
-GuildControl735 0.0.102
+GuildControl735 0.0.103
 Copyright (c) 2026 JustAlex888. All Rights Reserved.
 
 Permission is granted to install and run this addon for personal use.

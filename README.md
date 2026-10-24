@@ -182,6 +182,6 @@ A ban affects Guild Control data exchange only. It does not remove the character
 
 ---
 
-**Current release: 0.0.102 TEST (pre-release).** Download the installation ZIP from Releases; the automatic source archives are for source code.
+**Current release: 0.0.103 TEST (pre-release).** Download the installation ZIP from Releases; the automatic source archives are for source code.
 
 [License](LICENSE.txt) · [Third-party notices](THIRD_PARTY_NOTICES.md)

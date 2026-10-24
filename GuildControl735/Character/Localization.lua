@@ -2,7 +2,7 @@ local _, GC = ...
 local Satellite = GC.Character
 
 local enUS = {
-    TITLE = "Guild member card — version 0.0.102",
+    TITLE = "Guild member card — version 0.0.103",
     PURPOSE_TITLE = "What Guild Control 735 does",
     PURPOSE = "Shares only your saved equipment profiles with guild leaders and officers.",
     STEPS_TITLE = "How to update your profile",
@@ -53,7 +53,7 @@ local enUS = {
 }
 
 local ruRU = {
-    TITLE = "Визитка участника гильдии — версия 0.0.102",
+    TITLE = "Визитка участника гильдии — версия 0.0.103",
     PURPOSE_TITLE = "Для чего нужен Guild Control 735",
     PURPOSE = "Семья регистрируется автоматически при входе каждым персонажем. Основу назначает офицер меткой [GC:MAIN].",
     STEPS_TITLE = "Как обновить профиль",

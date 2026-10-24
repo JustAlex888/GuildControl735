@@ -3,11 +3,11 @@
 ## Notes: Filterable guild roster with permission-aware Guild Control profiles.
 ## Notes-ruRU: Состав гильдии, доверенные звания, визитки и аналитика Guild Control 735.
 ## Author: Guild Control 7.3.5 Project
-## Version: 0.0.102-TEST
-## X-Build: GuildControl735-0.0.102-20261023-01
+## Version: 0.0.103-TEST
+## X-Build: GuildControl735-0.0.103-20261023-01
 ## X-Component: Shared-Roster
 ## X-Status: TEST
-## X-Provenance: GC735_099_FROM_6C5F68E2_LANGUAGE_BRAND
+## X-Provenance: GC735_103_FROM_8D8BA0E1_COOPERATIVE_SURVEY
 ## X-License: All Rights Reserved
 ## SavedVariables: GuildControl735DB
 
@@ -31,6 +31,7 @@ Services\FastRecords.lua
 Services\FastSync.lua
 Services\ManualBans.lua
 Services\CacheSync.lua
+Services\AutoSurvey.lua
 Services\SecureExchange.lua
 Services\ProfileList.lua
 Services\FamilyCodec.lua

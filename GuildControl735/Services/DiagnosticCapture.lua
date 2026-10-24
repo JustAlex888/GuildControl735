@@ -59,7 +59,7 @@ function C:Initialize(db)
   end
  end
  t.sessions=sessions;self.db=t;self.started=GetTime()
- self.session={id=G.Diagnostics.db.session,at=stamp(),build=G.build,provenance="GC735_099_FROM_6C5F68E2_LANGUAGE_BRAND",taintStarts=0,taintStops=0}
+ self.session={id=G.Diagnostics.db.session,at=stamp(),build=G.build,provenance="GC735_103_FROM_8D8BA0E1_COOPERATIVE_SURVEY",taintStarts=0,taintStops=0}
  sessions[#sessions+1]=self.session;self:SessionInfo()
  -- A lease is only recovery information, never an instruction to resume logging.
  local lease=t.taintLease;t.taintLease=nil

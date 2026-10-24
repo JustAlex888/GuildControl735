@@ -54,6 +54,7 @@ function F:Finish(code,a)
   elseif a.changed==0 then j.unchanged=j.unchanged+1;self.metrics.unchanged=self.metrics.unchanged+1 end
   j.changed=j.changed+(a.changed or 0);j.nextAt=Clock()+(a.phase=="probe"and 0 or 0.125)
  end
+ if G.AutoSurvey then G.AutoSurvey:Completed(a,code)end
  a.done=true;self:Close(a);self:Advance()
 end
 function F:Send(msg,a,onSent,notBefore)
@@ -62,15 +63,16 @@ function F:Send(msg,a,onSent,notBefore)
   F.metrics.sent=F.metrics.sent+1;a.progress=Clock();if onSent then onSent()end
  end,nil,notBefore)
 end
-function F:Request(target)
+function F:Request(target,options)
  if not G.AdminTrust:OwnAllowed()then return false,"own_rank_not_trusted"end
  if not W.Hash("")then return false,"bit_api_unavailable"end
  if self.job then return false,"collection_already_running"end
  G.OfficerMarks:CaptureAll()
  local targets={}
- for _,m in ipairs(G.Roster.members or{})do if Online(m)and W.GUID(m.guid)and(not G.ManualBans or not G.ManualBans:Blocked(m.guid))and(not target or target=="ALL"or target==m.guid)then targets[#targets+1]=m.guid end end
+ for _,m in ipairs(G.Roster.members or{})do if Online(m)and W.GUID(m.guid)and(not G.ManualBans or not G.ManualBans:Blocked(m.guid))and(not options or not options.targets or options.targets[m.guid])and(not target or target=="ALL"or target==m.guid)then targets[#targets+1]=m.guid end end
  table.sort(targets);if #targets==0 or #targets>500 then return false,"online_targets"end
  self.job={targets=targets,index=1,completed=0,unchanged=0,changed=0,partial=0,skipped=0,failed=0,guild=G:GetGuildKey(),started=Clock(),nextAt=Clock(),groups=0}
+ self.job.automatic=options and options.automatic or false
  E.job=self.job;return true
 end
 function F:SurveyGroup(j)
@@ -403,7 +405,10 @@ function F:Receive(msg,sender,channel)
   -- Observers never apply or invent character records from this watermark.
   for i=1,a.slot do if not c.slots[i]then return self:Reject("ack_unknown_predecessor",sender)end end
   for i=1,a.slot do local p=c.slots[i]
-   if not p.done then p.done=true;p.advancedBy=a.slot;if i==a.slot then p.ackCode=code end;self:Close(p)end
+   if not p.done then
+    if i==a.slot and G.AutoSurvey then G.AutoSurvey:Completed(p,code)end
+    p.done=true;p.advancedBy=a.slot;if i==a.slot then p.ackCode=code end;self:Close(p)
+   end
   end
   self:Advance();return true
  end

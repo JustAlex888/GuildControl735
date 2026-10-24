@@ -2,10 +2,10 @@ local addonName, GC = ...
 local Satellite = GC.Character
 
 Satellite.name = addonName
-Satellite.version = "0.0.102"
+Satellite.version = "0.0.103"
 -- Compact compatibility version required by the existing GC735SAT v1 schema.
 Satellite.wireVersion = "021"
-Satellite.build = "GuildControl735-0.0.102-20261023-01"
+Satellite.build = "GuildControl735-0.0.103-20261023-01"
 
 local defaults = {
     window = { point = "CENTER", relativePoint = "CENTER", x = 0, y = 0 },
@@ -99,7 +99,7 @@ SLASH_GUILDCONTROL735SATELLITE2 = "/gcsatellite"
 SlashCmdList.GUILDCONTROL735SATELLITE = function(message)
     local command = string.lower((message or ""):match("^%s*(.-)%s*$"))
     if command == "version" then
-        Satellite:Print("0.0.102 TEST / " .. Satellite.build)
+        Satellite:Print("0.0.103 TEST / " .. Satellite.build)
     elseif command == "raids" then
         Satellite.RaidRuntime:Collect()
         Satellite:Print((GC:Text("Собственная рейдовая статистика обновлена локально. Передача — по запросу Guild Control.")))

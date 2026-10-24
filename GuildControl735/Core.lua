@@ -3,10 +3,10 @@ local addonName, GC = ...
 GC.Character = {}
 GC.DevTools = {}
 GC.name = addonName
-GC.version = "0.0.102"
+GC.version = "0.0.103"
 -- Compact compatibility version required by the existing GC735SAT v1 schema.
 GC.wireVersion = "021"
-GC.build = "GuildControl735-0.0.102-20261023-01"
+GC.build = "GuildControl735-0.0.103-20261023-01"
 
 local defaults = {
     window = { point = "CENTER", relativePoint = "CENTER", x = 0, y = 0 },
@@ -178,6 +178,7 @@ eventFrame:SetScript("OnEvent", function(_, event, arg1)
         GC:InitializeDataExchange()
         GC:InitializeVersionCheck()
         GC:InitializeSecureExchange()
+        GC.AutoSurvey:Initialize()
         if GC.InitializeMinimapButton then
             GC:InitializeMinimapButton()
         end
@@ -204,7 +205,7 @@ SlashCmdList.GUILDCONTROL735 = function(message)
         local m=key and GC.Roster:FindByKey(key)
         GC:Print(m and GC.SpamShield:Unblock(m.name) and (GC:Text("Локальная блокировка выбранного персонажа снята.")) or (GC:Text("Не удалось снять блокировку: выберите персонажа; требуется глава гильдии.")))
     elseif command == "version" then
-        GC:Print("0.0.102 TEST / " .. GC.build)
+        GC:Print("0.0.103 TEST / " .. GC.build)
     elseif command == "raidtest" or command == "raidtest storm" then
         GC.RaidTest:Start("storm")
     elseif command == "raidtest loss" then GC.RaidTest:Start("loss")

@@ -110,6 +110,16 @@ Press **Refresh roster** to refresh the standard guild roster information.
 
 Press **Request data** to collect Guild Control information. This is available to the guild master and members of trusted ranks. Press **Stop request** to cancel the current request.
 
+### Automatic data refresh — 0.0.103
+
+An available guild master or trusted member automatically surveys online characters every 30 minutes. Successfully surveyed characters with a current matching mark are skipped for 8 hours. Surveys retrieve saved equipment profiles; after changing gear, save the current profile again.
+
+One client leads the survey. A joining guild master or senior trusted member does not interrupt an active pass. Trusted clients exchange results and pending work; if the collector leaves, an available trusted client continues. All participating guild-master/trusted collectors need 0.0.103 for cooperative queue handover.
+
+Each pass is limited to 15 minutes. At the limit, the queue is cleared and rebuilt 30 minutes later from eligible online characters. Received data and successful marks are retained. Missing information may cause repeat requests.
+
+Request data manually bypasses the eight-hour interval. Stop request stops local collection and defers local automatic collection for 30 minutes. Ordinary members receive saved information on login and additionally every 2 hours when a data provider is available.
+
 ### Remind members to update their cards
 
 Use the profile reminder button to ask members in guild chat to update their character information.

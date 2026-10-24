@@ -15,9 +15,10 @@ function X:Enqueue(prefix,msg,guard,onSent,onDrop,notBefore)
 end
 function X:HasPending()
  local f,c,r=G.FastSync,G.CacheSync,G.RaidRuntime and G.RaidRuntime.engine
- return #self.queue>0 or (f and (f.job~=nil or f.active~=nil)) or (c and (c.client~=nil or c.server~=nil or c.wanted==true)) or (r and (r.pending~=nil or r.queue~=nil)) or false
+ return #self.queue>0 or (G.AutoSurvey and G.AutoSurvey.running~=nil)or (f and (f.job~=nil or f.active~=nil)) or (c and (c.client~=nil or c.server~=nil or c.wanted==true)) or (r and (r.pending~=nil or r.queue~=nil)) or false
 end
 function X:Stop(reason)
+ if G.AutoSurvey and reason~="guild_event"then G.AutoSurvey:ManualStop()end
  self.metrics.dropped=self.metrics.dropped+#self.queue;self.queue={}
  if G.FastSync then G.FastSync:Stop("manual_stop")end
  if G.CacheSync then G.CacheSync:Stop(reason or "manual_stop")end
@@ -58,7 +59,7 @@ function G:InitializeDataExchange()
  f:SetScript("OnUpdate",function(_,dt)if dt and dt>0.25 then X.resumeAt=GetTime()+2 end;X:Tick()end)
  if hooksecurefunc and type(SendAddonMessage)=="function"then
   hooksecurefunc("SendAddonMessage",function(prefix,msg)
-   local own=(G.FastWire and prefix==G.FastWire.prefix)or(G.CacheSync and prefix==G.CacheSync.prefix)or(G.ManualBans and prefix==G.ManualBans.prefix)
+   local own=(G.FastWire and prefix==G.FastWire.prefix)or(G.CacheSync and prefix==G.CacheSync.prefix)or(G.ManualBans and prefix==G.ManualBans.prefix)or(G.AutoSurvey and prefix==G.AutoSurvey.prefix)
    if not own and prefix~="GC735N28"and prefix~="GC735C42"and prefix~="GC735TRUST"and prefix~="GC735VER"and type(prefix)=="string"and type(msg)=="string"then
     local cost=#prefix+#msg+16;X.bytes=math.max(-2048,X.bytes-cost);X.metrics.otherBytes=X.metrics.otherBytes+cost
    end

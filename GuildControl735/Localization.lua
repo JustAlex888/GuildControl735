@@ -1,7 +1,7 @@
 local _, GC = ...
 
 local enUS = {
-    TITLE = "Guild Control 735 for UWoW Legion — version 0.0.102",
+    TITLE = "Guild Control 735 for UWoW Legion — version 0.0.103",
     TITLE_CREDIT = "%s — Developed by JustAlex888",
     SEARCH = "Search participant data",
     REFRESH = "Refresh roster",
@@ -98,7 +98,7 @@ local enUS = {
 }
 
 local ruRU = {
-    TITLE = "Guild Control 735 for UWoW Legion — версия 0.0.102",
+    TITLE = "Guild Control 735 for UWoW Legion — версия 0.0.103",
     TITLE_CREDIT = "%s — Разработано JustAlex888",
     SEARCH = "Поиск по данным участников",
     REFRESH = "Обновить состав",
